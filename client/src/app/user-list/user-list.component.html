@@ -1,0 +1,19 @@
+<h1 class="text-center">Liste des utilisateurs</h1>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let user of users" class="card" style="width: 18rem; margin: 10px">
+            <div class="text-center">
+                <img class="card-img-top center" style="width: 128px; height: 128px; border-radius: 50%; object-fit: cover; cursor: pointer; justify-content: center; align-items: center;" src="{{user.profilePicture}}" alt="Photo de profil">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-center">{{user.username}}</h5>
+                <p class="card-text text-center">{{user.role}}</p>
+                <div class="text-center">
+                    <button type="button" style="margin-bottom: 10px" class="btn btn-primary" (click)="goToUserProfile(user._id)">Visiter le profil</button>
+                    <button type="button" class="btn btn-success" (click)="followUser(user._id)" *ngIf="!user.followers.includes(user_id) && user._id !== user_id">Ajouter en ami</button>
+                    <button type="button" class="btn btn-danger" (click)="unfollowUser(user._id)" *ngIf="user.followers.includes(user_id)">Supprimer de mes amis</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

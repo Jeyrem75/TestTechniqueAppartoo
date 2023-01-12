@@ -1,0 +1,25 @@
+<div class="form-card">
+    <h2 class="text-center">Connexion</h2>
+    <form [formGroup]="loginForm" *ngIf="!isLoggedIn">
+        <div class="form-group">
+            <label for="username">Pseudo</label>
+            <input class="form-control" id="username" type="text" formControlName="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input class="form-control" id="password" type="password" formControlName="password" >
+        </div>
+        <div class="action-buttons">
+            <button class="btn btn-dark" type="submit" (click)="onLoginSubmit()" [disabled]="loginForm.invalid">Se connecter</button>
+        </div>
+        <div class="form-group">
+            <div *ngIf="isLoginFailed" class="alert alert-danger" role="alert">
+              La tentative de connexion a échoué: {{ errorMessage }}
+            </div>
+        </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+        Déjà connecté en tant que {{ name }}.
+    </div>
+</div>

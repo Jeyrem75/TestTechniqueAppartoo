@@ -1,0 +1,30 @@
+<div class="form-card">
+    <h1 class="text-center">Informations</h1>
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                <img style="width: 128px; height: 128px; border-radius: 50%; object-fit: cover; cursor: pointer; justify-content: center; align-items: center;" src="{{user.profilePicture}}" alt="Photo de profil">
+            </div>
+            <div>
+                <h5 class="text-center">Username : {{user.username}}</h5>
+                <h5 class="text-center">Role: {{user.role}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-card">
+    <h2 class="text-center">Amis</h2>
+    <div class="container">
+        <div class="row">
+            <div class="card" style="width: 18rem; margin: 10px" *ngFor="let friend of friends">
+                <div class="text-center">
+                    <img class="card-img-top" style="width: 128px; height: 128px; border-radius: 50%; object-fit: cover; cursor: pointer; justify-content: center; align-items: center;" src="{{friend.profilePicture}}" alt="Photo de profil">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{friend.username}}</h5>
+                    <p class="card-text text-center">{{friend.role}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
