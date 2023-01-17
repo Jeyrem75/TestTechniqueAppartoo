@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { JwtInterceptor } from './_helpers/http.interceptor';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { JwtInterceptor } from './_helpers/http.interceptor';
     PageNotFoundComponent,
     RegisterComponent,
     UserProfileComponent,
-    UserListComponent
+    UserListComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { JwtInterceptor } from './_helpers/http.interceptor';
       {path: 'users/list', component: UserListComponent},
       {path: 'profile/:id', component: UserProfileComponent},
       {path: 'edit/profile', component: EditProfileComponent},
+      {path: 'users/create', component: CreateUserComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: '**', component: PageNotFoundComponent}

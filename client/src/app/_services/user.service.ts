@@ -15,6 +15,24 @@ export class UserService {
 
   constructor(private http: HttpClient, private storageService: StorageService) { }
 
+  createUser(username: string, password: string, profilePicture: string, role: string): Observable<any> {
+    return this.http.post(
+      'http://localhost:3000/api/users/create',
+      {
+        username,
+        password,
+        profilePicture,
+        role
+      },
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.token}`
+        })
+      }
+    )
+  }
+
   getUsers(): Observable<any> {
     return this.http.get(
       'http://localhost:3000/api/users',

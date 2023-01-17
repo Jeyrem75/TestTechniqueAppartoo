@@ -4,6 +4,25 @@ const { verifyToken, verifyTokenAndAuthorization } = require("./verifyToken");
 
 const router = require("express").Router();
 
+router.post("/create", verifyToken, async (req, res) => {
+    const newUser = new User({
+        username: req.body.username,
+        password: CryptoJS.AES.encrypt(
+            req.body.password, process.env.PASS_SECRET
+        ).toString(),
+        profilePicture: req.body.profilePicture,
+        role: req.body.role,
+    });
+
+    try {
+        const savedUser = await newUser.save();
+        res.status(201).json(savedUser);
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
     if (req.body.password) {
         req.body.password = CryptoJS.AES.encrypt(

@@ -9,6 +9,7 @@ router.post("/register", async (req, res) => {
         password: CryptoJS.AES.encrypt(
             req.body.password, process.env.PASS_SECRET
         ).toString(),
+        profilePicture: req.body.profilePicture,
         role: req.body.role,
     });
 
